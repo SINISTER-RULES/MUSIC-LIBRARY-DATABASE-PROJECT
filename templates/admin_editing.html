@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>MUSIC LIBRARY</title>
+</head>
+
+<body class="bg-dark">
+    <!--NAVIGATION BAR-->
+    <nav class="navbar navbar-light navbar-default" role="navigation" style="background-color: black;">
+        <h3 class="navbar-brand navbar-left text-white">
+            <img src="../static/logo.png" class="float-left" width="70" height="70" alt="">
+        </h3>
+        <h1 class="navbar-nax mx-auto"
+            style="color:white; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight:bold;">
+            MUSIC LIBRARY DATABASE </h1>
+        <h5 class="text-white" style="text-transform: uppercase;">WELCOME {{ user }}</h5>
+    </nav>
+
+
+    <!--LINKS CONTAINER-->
+    <div class="container-fluid">
+        <div class="row justify-content">
+            <div class="col-sm-2 mt-5" style="position: fixed; z-index:777;">
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action" href="{{ url_for('admin_index')}}"
+                        style="font-size:20px;text-align:left;font-weight:bold;">SONGS</a>
+                    <a class="list-group-item list-group-item-action" href="{{ url_for('admin_add') }}"
+                        style="font-size:20px;text-align:left;font-weight:bold;">ADD SONGS</a>
+                    <a class="list-group-item list-group-item-action" href="{{ url_for('admin_delete') }}"
+                        style="font-size:20px;text-align:left;font-weight:bold;">DELETE SONGS</a>
+                    <a class="list-group-item list-group-item-action" href="{{ url_for('admin_edit') }}"
+                        style="font-size:20px;text-align:left;font-weight:bold;">EDIT SONGS</a>
+                    <a class="list-group-item list-group-item-action" href="{{ url_for('singer') }}"
+                        style="font-size:20px;text-align:left;font-weight:bold;">SINGER</a>
+                    <a class="list-group-item list-group-item-action" href="{{ url_for('singer_delete') }}"
+                        style="font-size:20px;text-align:left;font-weight:bold;">SINGER DELETE</a>
+                    <a class="list-group-item list-group-item-action" href="{{ url_for('index_login') }}"
+                        style="font-size:20px;text-align:left;font-weight:bold;">LOGOUT</a>
+                </div>
+            </div>
+            <div class="col-9 mt-3" style="margin-left:300px;">
+                <div class="mb-3">
+                    <p class="text-white h3 text-center">EDIT MUSIC</p>
+                </div>
+                <!--INPUT-->
+
+                <div class="my-3 mx-auto">
+                    <form method="post" autocomplete="off" class="form-floating">
+                        <div class="row mx-auto " style="width: 50%;">
+                            <p class="col-md-1 form-label text-center text-white pt-2" style="justify-content: center;">
+                                TITLE</p>
+                            <input name="title" id="title" class="col-md-10 form-control mb-2 mx-auto"
+                                style="width: 50%;" placeholder="TITLE" value="{{ music[0][0] }}" required>
+                        </div>
+
+                        <div class="row mx-auto " style="width: 50%;">
+                            <p class="col-md-1 form-label text-center text-white pt-2" style="justify-content: center;">
+                                GENRE</p>
+                            <input name="genre" id="genre" class="col-md-10 form-control mb-2 mx-auto"
+                                style="width: 50%;" placeholder="GENRE" value="{{ music[0][1] }}" required>
+                        </div>
+
+                        <div class="row mx-auto " style="width: 50%;">
+                            <p class="col-md-1 form-label text-center text-white pt-2" style="justify-content: center;">
+                                SINGER</p>
+                            <input name="singer" class="col-md-10 form-control mb-2 mx-auto" style="width: 50%;"
+                                placeholder="SINGER" value="{{ music[0][2] }}" required>
+                        </div>
+
+                        <div class="row mx-auto " style="width: 50%;">
+                            <p class="col-md-1 form-label text-center text-white pt-2" style="justify-content: center;">
+                                RATING</p>
+                            <input name="rating" class="col-md-10 form-control mb-2 mx-auto" style="width: 50%;"
+                                placeholder="RATING" value="{{ music[0][3] }}" required>
+                        </div>
+
+                        <div class="row mx-auto " style="width: 50%;">
+                            <p class="col-md-1 form-label text-center text-white pt-2" style="justify-content: center;">
+                                YEAR</p>
+                            <input name="rel_year" class="col-md-10 form-control mb-2 mx-auto" style="width: 50%;"
+                                placeholder="RELEASE YEAR" value="{{ music[0][4] }}" required>
+                        </div>
+
+                        <div class="row mx-auto " style="width: 50%;">
+                            <p class="col-md-1 form-label text-center text-white pt-2" style="justify-content: center;">
+                                LENGTH</p>
+                            <input name="duration" class="col-md-10 form-control mb-2 mx-auto" style="width: 50%;"
+                                placeholder="DURATION" value="{{ music[0][5] }}" required>
+                        </div>
+
+                        <div class="text-center">
+                            <input type="submit" class="btn btn-primary mx-auto">
+                        </div>
+                    </form>
+                </div>
+                <div class="list-group">
+                    {% for songs in music %}
+                    <div class="my-1">
+                        <p class="text-white h3 text-center">EDITING</p>
+                    </div>
+                    <div class="list-group-item list-group-item-action my-1 rounded" href="#">
+                        <h3 style="font-weight: bold;text-transform:uppercase;">{{ songs[0] }}</h4>
+                            <p class="my-1" style="text-transform: uppercase;">SINGER: {{ songs[2] }}</p>
+                            <p class="my-1" style="text-transform: uppercase;">GENRE: {{ songs[1] }}</p>
+                            <p class="my-1" style="text-transform: uppercase;">RATING: {{ songs[3] }}</p>
+                            <p class="my-1" style="text-transform: uppercase;">RELEASE YEAR: {{ songs[4] }}</p>
+                            <p class="my-1" style="text-transform: uppercase;">DURATION: {{ songs[5] }} mins</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FILE -->
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+
+</body>
+
+</html>
