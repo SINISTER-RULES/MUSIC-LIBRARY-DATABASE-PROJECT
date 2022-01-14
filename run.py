@@ -13,7 +13,8 @@ cursor = connection.cursor()
 
 user = ''
 user_name = ''
-team=''
+# team=''
+team='& samiya'
 
 ####################### LOGIN PAGE #######################
 @app.route('/')
