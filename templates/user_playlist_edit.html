@@ -70,14 +70,22 @@
                     <div class="my-1">
                         <h2 class="text-white h3 text-center">DELETED</h2>
                     </div> {% endif %}
-                    <a class="list-group-item list-group-item-action my-1 rounded"
+                    <a class="list-group-item list-group-item-action my-1 rounded" id="{{ songs[0] }}"
                         href="{{ url_for('user_editing') }}?name={{songs[0]}}">
-                        <h3 style="font-weight: bold;text-transform:uppercase;">{{ songs[0] }}</h4>
-                            <p class="my-1" style="text-transform: uppercase;">NO. OF SONGS: {{ songs[1] }}</p>
-                            <p class="my-1" style="text-transform: uppercase;">AVG RATING: {{ songs[2] }}</p>
-                            <!--<p class="my-1" style="text-transform: uppercase;">AVG DURATION: {{ songs[3] }}</p>
-                            <p class="my-1" style="text-transform: uppercase;">RELEASE YEAR: {{ songs[4] }}</p>
-                            <p class="my-1" style="text-transform: uppercase;">DURATION: {{ songs[5] }} mins</p> -->
+                        <div class="row">
+                            <div class="col-sm-7 pt-4">
+                                <h3 style="font-weight: bold;text-transform:uppercase;">{{ songs[0] }}
+                                    </h4>
+                            </div>
+                            <div class="col-sm-5">
+                                <p class="my-1" style="text-transform: uppercase;"><strong>NO. OF SONGS:
+                                    </strong>{{ songs[1] }}</p>
+                                <p class="my-1" style="text-transform: uppercase;"><strong>AVG RATING:
+                                    </strong>{{ songs[2] }}</p>
+                                <p class="my-1" style="text-transform: uppercase;"><strong>AVG DURATION:
+                                    </strong>{{ songs[3] }} MINS</p>
+                            </div>
+                        </div>
                     </a>
                     {% endfor %}
                 </div>

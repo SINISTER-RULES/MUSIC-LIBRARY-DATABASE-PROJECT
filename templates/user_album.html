@@ -63,10 +63,20 @@
                     {% for songs in singers %}
                     <a class="list-group-item list-group-item-action my-1 rounded" id="{{ songs[0] }}"
                         href="{{ url_for('user_albums_songs') }}?name={{songs[0]}}">
-                        <h3 style="font-weight: bold;text-transform:uppercase;">{{ songs[0] }}</h3>
-                        <p class="my-1" style="text-transform: uppercase;">NO. OF SONGS: {{ songs[1] }}</p>
-                        <p class="my-1" style="text-transform: uppercase;">AVG RATING: {{ songs[2] }}</p>
-                        <p class="my-1" style="text-transform: uppercase;">AVG DURATION: {{ songs[3] }}</p>
+                        <div class="row">
+                            <div class="col-sm-7 pt-4">
+                                <h3 style="font-weight: bold;text-transform:uppercase;">{{ songs[0] }}
+                                    </h4>
+                            </div>
+                            <div class="col-sm-5">
+                                <p class="my-1" style="text-transform: uppercase;"><strong>NO. OF SONGS:
+                                    </strong>{{ songs[1] }}</p>
+                                <p class="my-1" style="text-transform: uppercase;"><strong>AVG RATING:
+                                    </strong>{{ songs[2] }}</p>
+                                <p class="my-1" style="text-transform: uppercase;"><strong>AVG DURATION:
+                                    </strong>{{ songs[3] }} MINS</p>
+                            </div>
+                        </div>
                     </a>
                     {% endfor %}
                 </div>

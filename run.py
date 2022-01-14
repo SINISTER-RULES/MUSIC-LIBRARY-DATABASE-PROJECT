@@ -133,14 +133,15 @@ def admin_delete_song():
     global user
     user = "admin"
     name = request.form['title']
-    
+    cursor.execute("select count(*) from song")
+    no_of_songs = cursor.fetchall()
     cursor.execute("select * from song where name='"+name+"';")
     music = cursor.fetchall()
     com = " delete from song where name='"+name+"';"
     cursor.execute(com)
     connection.commit()
 
-    return render_template('admin_delete_song.html', music = music,  user=user, show='False'), {"Refresh": "4; url=admin_delete"}
+    return render_template('admin_delete_song.html', music = music,  user=user, show='False',no_of_songs=no_of_songs), {"Refresh": "4; url=admin_delete"}
 
 
 ####################### ADMIN SONG EDIT PAGE #######################
@@ -385,7 +386,7 @@ def user_playlist_add():
 def user_playlist_delete():
     global user
     user = user_name
-    cursor.execute("select name, count(name),round(avg(rating),2) from playlist group by name;")
+    cursor.execute("select name, count(name),round(avg(rating),2), round(avg(duration),2) from playlist group by name;")
     singers = cursor.fetchall()
     cursor.execute("select count(distinct name) from playlist;")
     no_of_singers = cursor.fetchall()
@@ -395,7 +396,7 @@ def user_playlist_delete():
 def playlist_songs_delete():
     name = request.form['name']
     
-    cursor.execute('select name, count(name), round(avg(rating),2) from playlist where name="'+name+'";')
+    cursor.execute('select name, count(name), round(avg(rating),2), round(avg(duration),2) from playlist where name="'+name+'";')
     singers = cursor.fetchall()
 
     cursor.execute('select s.* from song s, playlist p where p.name="'+name+'" and p.song_name=s.name;')
@@ -415,7 +416,7 @@ def playlist_songs_delete():
 def user_edit():
     global user
     user = user_name
-    cursor.execute('select name, count(name), round(avg(rating),2) from playlist group by name;')
+    cursor.execute('select name, count(name), round(avg(rating),2), round(avg(duration),2) from playlist group by name;')
     music = cursor.fetchall()
     return render_template('user_playlist_edit.html',music=music, user=user, show='True')
 
