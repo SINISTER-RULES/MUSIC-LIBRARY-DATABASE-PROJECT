@@ -322,7 +322,7 @@ def user_albums_songs():
     songs = cursor.fetchall()
     cursor.execute("select count(*) from song where genre='"+name+"';")
     no_of_songs = cursor.fetchall()
-    return render_template('user_singer_songs.html', name=name, music=songs, user=user, page='albums', no_of_songs=no_of_songs)
+    return render_template('user_album_songs.html', name=name, music=songs, user=user, page='albums', no_of_songs=no_of_songs)
 
 ####################### USER PLAYLIST PAGE #######################    
 @app.route('/user_playlist', methods=['GET'])

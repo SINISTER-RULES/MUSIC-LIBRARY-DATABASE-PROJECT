@@ -12,7 +12,8 @@
 
 <body class="bg-dark">
     <!--NAVIGATION BAR-->
-    <nav class="navbar navbar-light navbar-default" role="navigation" style="background-color: black;">
+    <nav class="navbar navbar-light navbar-default" role="navigation"
+        style="background-color: black; position:fixed; width:100%;margin-top:-52px;z-index:777;">
         <h3 class="navbar-brand navbar-left text-white">
             <img src="../static/logo.png" class="float-left" width="70" height="70" alt="">
         </h3>
@@ -35,19 +36,28 @@
     <!--LINKS CONTAINER-->
     <div class="container-fluid mt-5">
         <div class="row justify-content">
-            <div class="col-sm-2">
+            <div class="col-sm-2" style="position: fixed; z-index:777;">
                 <div class="list-group">
                     <a class="list-group-item list-group-item-action" href="{{ url_for('user_index')}}"
                         style="font-size:20px;text-align:left;font-weight:bold;">SONGS</a>
                     <a class="list-group-item list-group-item-action" href="{{ url_for('user_singer') }}"
                         style="font-size:20px;text-align:left;font-weight:bold;">SINGER</a>
-                    <a class="list-group-item list-group-item-action" href="{{ url_for('user_albums') }}"
+                    <a class="nav-link active list-group-item list-group-item-action"
+                        href="{{ url_for('user_albums') }}"
                         style="font-size:20px;text-align:left;font-weight:bold;">ALBUMS</a>
+                    <a class="list-group-item list-group-item-action" href="{{ url_for('user_playlist') }}"
+                        style="font-size:20px;text-align:left;font-weight:bold;">PLAYLIST</a>
+                    <a class="list-group-item list-group-item-action" href="{{ url_for('user_playlist_add') }}"
+                        style="font-size:20px;text-align:left;font-weight:bold;">ADD PLAYLIST</a>
+                    <a class="list-group-item list-group-item-action" href="{{ url_for('user_playlist_delete') }}"
+                        style="font-size:20px;text-align:left;font-weight:bold;">DELETE PLAYLIST</a>
+                    <a class="list-group-item list-group-item-action" href="{{ url_for('user_edit') }}"
+                        style="font-size:20px;text-align:left;font-weight:bold;">EDIT PLAYLIST</a>
                     <a class="list-group-item list-group-item-action" href="{{ url_for('index_login') }}"
                         style="font-size:20px;text-align:left;font-weight:bold;">LOGOUT</a>
                 </div>
             </div>
-            <div class="col-9">
+            <div class="col-9" style="margin-left:300px;">
                 <div class="list-group">
                     {% for songs in music %}
                     <a class="list-group-item list-group-item-action my-1 rounded" id="{{ songs[0] }}" href="">
