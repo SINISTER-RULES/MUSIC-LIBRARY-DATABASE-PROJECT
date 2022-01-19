@@ -58,7 +58,7 @@
                         SAMARTH {{team}}</h3>
                     <h5 class=" text-center text-white"
                         style="letter-spacing: 2px;font-weight:bold;margin-top:2%;margin-bottom:1%">
-                        TOTAL SONGS:
+                        TOTAL USERS:
                         {{ no_of_songs[0][0] }}
                     </h5>
                 </div>
@@ -66,20 +66,20 @@
                     {% for songs in music %}
                     <div class="list-group-item list-group-item-action my-1 rounded" id="{{ songs[0] }}" href="#">
                         <div class="row">
-                            <div class="col-sm-7 pt-5">
-                                <h3 style="font-weight: bold;text-transform:uppercase;">{{ songs[0] }}</h4>
+                            <div class="col-sm-7 pt-2">
+                                <h3 style="font-weight: bold;">{{ songs[0] }}</h4>
                             </div>
                             <div class="col-sm-5">
-                                <p class="my-1" style="text-transform: uppercase;"><strong>SINGER:
-                                    </strong>{{ songs[2] }}</p>
-                                <p class="my-1" style="text-transform: uppercase;"><strong>GENRE:
+                                <p class="my-1"><strong>PASSWORD:
                                     </strong>{{ songs[1] }}</p>
-                                <p class="my-1" style="text-transform: uppercase;"><strong>RATING:
+                                <p class="my-1" style="text-transform: uppercase;"><strong>CREATION TIME:
+                                    </strong>{{ songs[2] }}</p>
+                                <!-- <p class="my-1" style="text-transform: uppercase;"><strong>RATING:
                                     </strong>{{ songs[3] }}</p>
                                 <p class="my-1" style="text-transform: uppercase;"><strong>RELEASE YEAR:
                                     </strong>{{ songs[4] }}</p>
                                 <p class="my-1" style="text-transform: uppercase;"><strong>DURATION:
-                                    </strong>{{ songs[5] }} mins</p>
+                                    </strong>{{ songs[5] }} mins</p> -->
                             </div>
                         </div>
                     </div>

@@ -57,14 +57,26 @@ def signup_values():
     if username != 'admin':
         global user_name
         user_name = username
-    try:
-        com = "insert into users(username, password) values(%s, %s)"
-        val = (username, password)
-        cursor.execute(com, val)
-        connection.commit()
-    except:
-        return redirect(url_for('index_login'))
+    # try:
+        
+    # except:
+    #     return redirect(url_for('index_login'))
+    com = "insert into users(username, password) values(%s, %s)"
+    val = (username, password)
+    cursor.execute(com, val)
+    connection.commit()
     return redirect(url_for('user_index'))
+
+####################### ADMIN USER CREATION PAGE #######################
+@app.route('/user_creation')
+def user_creation():
+    global user
+    user = "admin"
+    cursor.execute("select * from user_creation;")
+    music = cursor.fetchall()
+    cursor.execute("select count(*) from user_creation")
+    no_of_songs = cursor.fetchall()
+    return render_template('user_creation.html', music=music, user=user, no_of_songs=no_of_songs, team=team)
 
 ####################### ADMIN SONGS PAGE #######################
 @app.route('/admin_songs')
