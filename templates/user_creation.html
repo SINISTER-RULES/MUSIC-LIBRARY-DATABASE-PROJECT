@@ -30,8 +30,7 @@
         <div class="row justify-content">
             <div class="col-sm-2" style="position: fixed; z-index:777;">
                 <div class="list-group">
-                    <a class="my-1 rounded nav-link active list-group-item list-group-item-action"
-                        href="{{ url_for('admin_index')}}"
+                    <a class="list-group-item list-group-item-action" href="{{ url_for('admin_index')}}"
                         style="font-size:20px;text-align:left;font-weight:bold;">SONGS</a>
                     <a class="list-group-item list-group-item-action" href="{{ url_for('admin_add') }}"
                         style="font-size:20px;text-align:left;font-weight:bold;">ADD SONGS</a>
@@ -43,7 +42,8 @@
                         style="font-size:20px;text-align:left;font-weight:bold;">SINGER</a>
                     <a class="list-group-item list-group-item-action" href="{{ url_for('singer_delete') }}"
                         style="font-size:20px;text-align:left;font-weight:bold;">SINGER DELETE</a>
-                    <a class="list-group-item list-group-item-action" href="{{ url_for('user_creation') }}"
+                    <a class="my-1 rounded nav-link active list-group-item list-group-item-action"
+                        href="{{ url_for('user_creation') }}"
                         style="font-size:20px;text-align:left;font-weight:bold;">USER CREATIONS</a>
                     <a class="list-group-item list-group-item-action" href="{{ url_for('index_login') }}"
                         style="font-size:20px;text-align:left;font-weight:bold;">LOGOUT</a>
@@ -52,10 +52,10 @@
             <div class="col-9" style="margin-left:300px;">
                 <!--PARAGRAPH-->
                 <div class="">
-                    <h3 class=" text-center text-white"
+                    <!-- <h3 class=" text-center text-white"
                         style="letter-spacing: 2px;font-weight:bold;text-transform:uppercase;">
                         CREATED BY :
-                        SAMARTH {{team}}</h3>
+                        SAMARTH {{team}}</h3> -->
                     <h5 class=" text-center text-white"
                         style="letter-spacing: 2px;font-weight:bold;margin-top:2%;margin-bottom:1%">
                         TOTAL USERS:

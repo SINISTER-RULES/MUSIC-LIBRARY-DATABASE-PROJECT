@@ -72,9 +72,9 @@ def signup_values():
 def user_creation():
     global user
     user = "admin"
-    cursor.execute("select * from user_creation;")
+    cursor.execute("select * from user_creation order by creation_time desc;")
     music = cursor.fetchall()
-    cursor.execute("select count(*) from user_creation")
+    cursor.execute("select count(*) from user_creation;")
     no_of_songs = cursor.fetchall()
     return render_template('user_creation.html', music=music, user=user, no_of_songs=no_of_songs, team=team)
 
